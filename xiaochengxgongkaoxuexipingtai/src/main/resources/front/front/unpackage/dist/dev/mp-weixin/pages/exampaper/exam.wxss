@@ -1,0 +1,138 @@
+
+.box {
+    background-color: #f3f3f3;
+    height: 100vh;
+    padding-top: 15rpx;
+}
+.datilist {
+    background-color: #fff;
+    height: 180rpx;
+    width: 690rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+    box-shadow: 0px 0px 20rpx #acacac;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    /* align-items: center; */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+    border-radius: 15rpx;
+}
+.exam {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.datilist-List {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    margin-left: 15rpx;
+    margin-right: 15rpx;
+}
+.datidata {
+    width: 690rpx;
+    height: 70vh;
+    box-shadow: 0px 0px 20rpx #acacac;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    border-radius: 15rpx;
+    background-color: #fff;
+}
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding-top: 20rpx;
+}
+.swiper-item {}
+.swiper-text {
+    width: 660rpx;
+    height: auto;
+    margin: 0 auto;
+    line-height: 50rpx;
+    /* margin-bottom: 20rpx; */
+    /* border-bottom: 1px solid red; */
+}
+.swiper-list {
+    width: 660rpx;
+    height: 100rpx;
+    /* display: flex;
+    align-items: center; */
+    margin: 0 auto;
+    margin-top: 10rpx;
+    /* border-bottom: 1rpx solid red; */
+}
+
+/* .swiper-list:active {
+    color: rgb(142, 222, 233)
+} */
+.submit {
+    width: 690rpx;
+    height: 120rpx;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 30rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-justify-content: space-around;
+            justify-content: space-around;
+}
+.submit-item {
+    width: 300rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color: #fff;
+    background-color: #71d27f;
+    border-radius: 50rpx;
+}
+.topic {
+    font-size: 34rpx;
+    height: 100rpx;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #f1eded;
+    border-radius: 15rpx;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.topic::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.topic::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px #f1eded;
+    border-radius: 10px;
+    background-color: #f1eded;
+}
+
+/*定义滑块 内阴影+圆角*/
+.topic::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, .3);
+    background-color: #000;
+}
+.topic::-webkit-scrollbar {
+    display: block;
+}
+

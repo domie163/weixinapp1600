@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#e92758",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "小程序公考学习平台首页",
+  "usingComponents": {
+    "uni-icons": "/components/uni-ui/lib/uni-icons/uni-icons"
+  }
+}

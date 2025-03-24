@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#e92758",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "学习足迹添加/修改",
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

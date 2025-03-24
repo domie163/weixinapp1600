@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.XuexizujiDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.shipin_id as shipinId
+        ,a.yonghu_id as yonghuId
+        ,a.xuexizuji_time as xuexizujiTime
+        ,a.xuexizuji_types as xuexizujiTypes
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.XuexizujiView" >
+        SELECT
+        <include refid="Base_Column_List" />
+
+--         级联表的字段
+        ,shipin.shipin_name as shipinName
+        ,shipin.shipin_photo as shipinPhoto
+        ,shipin.shipin_video as shipinVideo
+        ,shipin.shipin_types as shipinTypes
+        ,shipin.shipin_content as shipinContent
+        ,shipin.shipin_delete as shipinDelete
+        ,yonghu.yonghu_name as yonghuName
+        ,yonghu.yonghu_phone as yonghuPhone
+        ,yonghu.yonghu_id_number as yonghuIdNumber
+        ,yonghu.yonghu_photo as yonghuPhoto
+        ,yonghu.xuexi_number as xuexiNumber
+        ,yonghu.yonghu_email as yonghuEmail
+
+        FROM xuexizuji  a
+        left JOIN shipin shipin ON a.shipin_id = shipin.id
+        left JOIN yonghu yonghu ON a.yonghu_id = yonghu.id
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test="params.shipinId != null and params.shipinId != ''">
+                and (
+                    a.shipin_id = #{params.shipinId}
+                )
+            </if>
+            <if test="params.yonghuId != null and params.yonghuId != ''">
+                and (
+                    a.yonghu_id = #{params.yonghuId}
+                )
+            </if>
+            <if test=" params.xuexizujiTimeStart != '' and params.xuexizujiTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.xuexizuji_time) >= UNIX_TIMESTAMP(#{params.xuexizujiTimeStart}) ]]>
+            </if>
+            <if test=" params.xuexizujiTimeEnd != '' and params.xuexizujiTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.xuexizuji_time) <= UNIX_TIMESTAMP(#{params.xuexizujiTimeEnd}) ]]>
+            </if>
+            <if test="params.xuexizujiTypes != null and params.xuexizujiTypes != ''">
+                and a.xuexizuji_types = #{params.xuexizujiTypes}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+
+                <!-- 判断视频信息的id不为空 -->
+            <if test=" params.shipinIdNotNull != '' and params.shipinIdNotNull != null and params.shipinIdNotNull != 'null' ">
+                and a.shipin_id IS NOT NULL
+            </if>
+            <if test=" params.shipinName != '' and params.shipinName != null and params.shipinName != 'null' ">
+                and shipin.shipin_name like CONCAT('%',#{params.shipinName},'%')
+            </if>
+            <if test=" params.shipinVideo != '' and params.shipinVideo != null and params.shipinVideo != 'null' ">
+                and shipin.shipin_video like CONCAT('%',#{params.shipinVideo},'%')
+            </if>
+            <if test="params.shipinTypes != null  and params.shipinTypes != ''">
+                and shipin.shipin_types = #{params.shipinTypes}
+            </if>
+
+            <if test=" params.shipinContent != '' and params.shipinContent != null and params.shipinContent != 'null' ">
+                and shipin.shipin_content like CONCAT('%',#{params.shipinContent},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(shipin.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(shipin.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.shipinDeleteStart != null  and params.shipinDeleteStart != '' ">
+                <![CDATA[  and shipin.shipin_delete >= #{params.shipinDeleteStart}   ]]>
+            </if>
+            <if test="params.shipinDeleteEnd != null  and params.shipinDeleteEnd != '' ">
+                <![CDATA[  and shipin.shipin_delete <= #{params.shipinDeleteEnd}   ]]>
+            </if>
+            <if test="params.shipinDelete != null  and params.shipinDelete != '' ">
+                and shipin.shipin_delete = #{params.shipinDelete}
+            </if>
+                <!-- 判断用户的id不为空 -->
+            <if test=" params.yonghuIdNotNull != '' and params.yonghuIdNotNull != null and params.yonghuIdNotNull != 'null' ">
+                and a.yonghu_id IS NOT NULL
+            </if>
+            <if test=" params.yonghuName != '' and params.yonghuName != null and params.yonghuName != 'null' ">
+                and yonghu.yonghu_name like CONCAT('%',#{params.yonghuName},'%')
+            </if>
+            <if test=" params.yonghuPhone != '' and params.yonghuPhone != null and params.yonghuPhone != 'null' ">
+                and yonghu.yonghu_phone like CONCAT('%',#{params.yonghuPhone},'%')
+            </if>
+            <if test=" params.yonghuIdNumber != '' and params.yonghuIdNumber != null and params.yonghuIdNumber != 'null' ">
+                and yonghu.yonghu_id_number like CONCAT('%',#{params.yonghuIdNumber},'%')
+            </if>
+            <if test="params.xuexiNumberStart != null  and params.xuexiNumberStart != '' ">
+                <![CDATA[  and yonghu.xuexi_number >= #{params.xuexiNumberStart}   ]]>
+            </if>
+            <if test="params.xuexiNumberEnd != null  and params.xuexiNumberEnd != '' ">
+                <![CDATA[  and yonghu.xuexi_number <= #{params.xuexiNumberEnd}   ]]>
+            </if>
+            <if test="params.xuexiNumber != null  and params.xuexiNumber != '' ">
+                and yonghu.xuexi_number = #{params.xuexiNumber}
+            </if>
+            <if test=" params.yonghuEmail != '' and params.yonghuEmail != null and params.yonghuEmail != 'null' ">
+                and yonghu.yonghu_email like CONCAT('%',#{params.yonghuEmail},'%')
+            </if>
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

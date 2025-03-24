@@ -1,0 +1,93 @@
+
+.mistakes{
+    width: 690rpx;
+    height: auto;
+    border-radius: 15rpx;
+    background-color: #fff;
+    margin: 15rpx auto;
+    padding-bottom: 15rpx;
+    box-shadow: 0 0 20rpx 0 #acacb4 ;
+}
+.head{
+    width: 96%;
+    height: auto;
+    margin: 15rpx;
+    padding-top: 15rpx;
+}
+.option{
+    width: 80%;
+    height: auto;
+    margin: 15rpx;
+    margin-left: 30rpx;
+}
+.analysis{
+    height: 300rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+    margin: 15rpx;
+    border-radius: 15rpx;
+    padding-top: 15rpx;
+    padding-bottom: 15rpx;
+    padding-left: 15rpx;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #f1eded;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.analysis::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.analysis::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px #f1eded;
+    border-radius: 10px;
+    background-color: #f1eded;
+}
+
+/*定义滑块 内阴影+圆角*/
+.analysis::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 10px #f1eded;
+    background-color: #000;
+}
+.analysis::-webkit-scrollbar {
+    display: block;
+}
+.timu{
+    height: 120rpx;
+    background-color: #f1eded;
+    border-radius: 15rpx;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.timu::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.timu::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px #fff;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/*定义滑块 内阴影+圆角*/
+.timu::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, .3);
+    background-color: #fff;
+}
+
